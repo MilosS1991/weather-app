@@ -79,7 +79,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 p-4 md:p-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-4">
 
-        <header className="flex flex-col gap-2 py-2">
+        <header className="flex flex-col gap-2 py-2 fade-up">
           <div className="flex items-center gap-3">
             <LocationSearch location={location} onLocationChange={setLocation} />
             <div className="flex-none flex items-center gap-3">
@@ -102,24 +102,28 @@ export default function App() {
 
         <SevereWeatherBanner events={severeEvents} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 fade-up fade-up-1">
           <CurrentConditions hourly={hourly} index={currentIdx} locationName={location.name} />
           <PressureAlert pressureArray={hourly.pressure_msl} currentIndex={currentIdx} />
           <AirQuality data={aqData} isPending={aqPending} error={aqError} />
         </div>
 
-        <HourlyForecast hourly={hourly} startIndex={currentIdx} timezone={timezone} />
+        <div className="fade-up fade-up-2">
+          <HourlyForecast hourly={hourly} startIndex={currentIdx} timezone={timezone} />
+        </div>
 
         {dailyData && (
+          <div className="fade-up fade-up-3">
           <DailyForecast
             data={dailyData}
             hourly={hourly}
             currentHourIndex={currentIdx}
             timezone={timezone}
           />
+          </div>
         )}
 
-        <div>
+        <div className="fade-up fade-up-4">
           <button
             onClick={() => setShowModels(s => !s)}
             className="flex items-center gap-2 text-slate-600 hover:text-slate-400 text-xs uppercase tracking-widest transition-colors mb-2"

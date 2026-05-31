@@ -157,7 +157,7 @@ export function DailyForecast({ data, hourly, currentHourIndex, timezone }: Prop
     : '';
 
   return (
-    <div className="bg-slate-800 rounded-2xl p-4">
+    <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800/60 rounded-2xl shadow-xl p-4">
       <div className="text-slate-400 text-sm uppercase tracking-widest mb-3 px-3 sm:px-4">
         7-Day Forecast
       </div>

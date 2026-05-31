@@ -10,7 +10,7 @@ interface Props {
 
 function SkeletonCard() {
   return (
-    <div className="bg-slate-800 rounded-2xl p-6 flex flex-col gap-4">
+    <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800/60 rounded-2xl shadow-xl p-6 flex flex-col gap-4">
       <div className="text-slate-400 text-sm uppercase tracking-widest">Air Quality</div>
       <div className="h-10 w-24 bg-slate-700 rounded animate-pulse" />
       <div className="grid grid-cols-2 gap-2">
@@ -27,7 +27,7 @@ export function AirQuality({ data, isPending, error }: Props) {
 
   if (error || !data) {
     return (
-      <div className="bg-slate-800 rounded-2xl p-6 flex flex-col gap-2">
+      <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800/60 rounded-2xl shadow-xl p-6 flex flex-col gap-2">
         <div className="text-slate-400 text-sm uppercase tracking-widest">Air Quality</div>
         <div className="text-red-400 text-sm">{error?.message ?? 'No data'}</div>
       </div>
@@ -46,7 +46,7 @@ export function AirQuality({ data, isPending, error }: Props) {
   ].filter((r): r is { label: string; value: number; unit: string } => r.value != null);
 
   return (
-    <div className="bg-slate-800 rounded-2xl p-6 flex flex-col gap-4">
+    <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800/60 rounded-2xl shadow-xl p-6 flex flex-col gap-4">
       <div className="text-slate-400 text-sm uppercase tracking-widest">Air Quality</div>
 
       {usAqi != null && cat ? (
