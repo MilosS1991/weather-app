@@ -275,7 +275,7 @@ export function HourlyForecast({
   }
 
   return (
-    <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800/60 rounded-2xl shadow-xl p-6">
+    <div className="bg-slate-800 rounded-2xl p-6">
       <div className="text-slate-400 text-sm uppercase tracking-widest mb-3">{title}</div>
       <TempSparkline temps={sparkTemps} times={sparkTimes} gradId={gradId} timezone={timezone} />
       {cells}

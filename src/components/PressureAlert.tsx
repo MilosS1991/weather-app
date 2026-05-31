@@ -62,8 +62,8 @@ export function PressureAlert({ pressureArray, currentIndex }: Props) {
 
   return (
     <div
-      className={`bg-slate-900/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 flex flex-col gap-4 border ${
-        styles ? styles.border : 'border-slate-800/60'
+      className={`bg-slate-800 rounded-2xl p-6 flex flex-col gap-4 border ${
+        styles ? styles.border : 'border-transparent'
       }`}
     >
       <div className="flex items-center justify-between">

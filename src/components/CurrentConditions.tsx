@@ -39,7 +39,7 @@ export function CurrentConditions({ hourly, index, locationName }: Props) {
   const arrowRot = windArrowRotation(direction);
 
   return (
-    <div className="bg-slate-900/90 backdrop-blur-sm border border-slate-800/60 rounded-2xl shadow-xl p-4 md:p-6 flex flex-col gap-4">
+    <div className="bg-slate-800 rounded-2xl p-4 md:p-6 flex flex-col gap-4">
       <div className="flex items-start justify-between">
         <div>
           <div className="text-slate-400 text-sm uppercase tracking-widest">{locationName}</div>
@@ -49,7 +49,7 @@ export function CurrentConditions({ hourly, index, locationName }: Props) {
       </div>
 
       <div>
-        <div className="text-6xl font-bold text-white tabular-nums">
+        <div className="text-6xl font-light text-orange-100 tabular-nums">
           {Math.round(temp)}°
         </div>
         <div className="text-slate-400 text-sm mt-1">{wmoLabel(code)}</div>
