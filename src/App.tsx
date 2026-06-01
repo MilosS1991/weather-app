@@ -33,7 +33,7 @@ export default function App() {
   const [showModels, setShowModels] = useState(false);
   const favorites = useFavorites();
 
-  const { data: weather, isPending: weatherPending, error: weatherError, refetch: retryWeather } = useWeather(location);
+  const { data: weather, isPending: weatherPending, isFetching: weatherFetching, error: weatherError, refetch: retryWeather, dataUpdatedAt } = useWeather(location);
   const { data: aqData, isPending: aqPending, error: aqError } = useAirQuality(location.latitude, location.longitude);
   const { data: dailyData } = useDaily(location);
   const pressureAlerts = usePressureAlerts(location);
@@ -84,12 +84,26 @@ export default function App() {
             <LocationSearch location={location} onLocationChange={setLocation} />
             <div className="flex-none flex items-center gap-3">
               <AlertToggle {...pressureAlerts} />
-              <div className="text-slate-500 text-xs text-right hidden sm:block">
-                {new Date().toLocaleDateString('en-GB', {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                })}
+              <div className="text-xs text-right hidden sm:block">
+                <div className="text-slate-500">
+                  {new Date().toLocaleDateString('en-GB', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                  })}
+                </div>
+                <div className="flex items-center justify-end gap-1.5 mt-0.5">
+                  {weatherFetching && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-none" />
+                  )}
+                  <span className="text-slate-600">
+                    {weatherFetching
+                      ? 'Refreshing…'
+                      : dataUpdatedAt
+                      ? `Updated ${new Date(dataUpdatedAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`
+                      : ''}
+                  </span>
+                </div>
               </div>
             </div>
           </div>

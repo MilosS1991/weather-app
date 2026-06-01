@@ -4,12 +4,15 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
 import App from './App.tsx'
 
+const STALE_MS = 10 * 60 * 1000;
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 15 * 60 * 1000,  // weather data changes at most hourly
+      staleTime: STALE_MS,
+      refetchOnWindowFocus: true,
+      refetchInterval: STALE_MS,
       retry: 2,
-      refetchOnWindowFocus: false,
     },
   },
 })
